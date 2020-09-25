@@ -2,6 +2,7 @@ body{
  margin-bottom: 0px;
  padding: 0px;
  width: 100%; 
+ height: 100%;
 }  
 table{
   border: 5px solid;
@@ -31,10 +32,14 @@ h3{
   text-align: center;
   margin-bottom: 0px;
   padding: 10px;
+  width: 100%;
+  bottom: 0px;
+
 }
 .footerp{
   color: white;
   margin: 0px;
+  bottom: 0px;
 }
 .footer a{
   color: cyan;
