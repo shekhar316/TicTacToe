@@ -2,6 +2,7 @@
 function resetScore(){
   document.p1score = 0;
   document.p2score = 0;
+  document.total = 0;
 }
 
 
@@ -9,7 +10,7 @@ function startGame(){
   for (var i = 1; i<=9; i=i+1){
     clearBox(i);
   }
-
+  // document.gamestatus = false;
   document.player1 = document.getElementById("p1").value;
   document.player2 = document.getElementById("p2").value;
   if(document.player1 == ""){
@@ -19,14 +20,22 @@ function startGame(){
     document.player2 = "Player 2";
   }
 
-  document.getElementById("p1name").value = document.player1;
-  document.getElementById("p2name").value = document.player2;
+  document.getElementById("p1name").innerText = document.player1;
+  document.getElementById("p2name").innerText = document.player2;
   document.getElementById("p1score").innerText = document.p1score;
   document.getElementById("p2score").innerText = document.p2score;
-
-  document.turn = "X";
+  document.chances = 0;
+  
   document.winner = null;
-  sendMsg("'" + document.player1 + "' start the game");
+  if(document.total % 2 == 0){
+    document.turn = "X";
+    sendMsg("'" + document.player1 + "' start the game");
+  }
+  else{
+    document.turn = "O";
+    sendMsg("'" + document.player2 + "' start the game");
+  }
+  
 
 }
 
@@ -47,35 +56,51 @@ function nextMove(box){
      sendMsg("'" + document.player2 + "' already has won the game."); 
     }
     
-  }else {
-    if(box.innerText == ''){
-      box.innerText = document.turn;
-      changeTurn();
+  }else if(document.chances == 9){
+    sendMsg("It's a Tie.");
     }
     else{
-      sendMsg("It's " + document.turn + "'s turn. \nThat box is already used.");
+      if(box.innerText == ''){
+        box.innerText = document.turn;
+        changeTurn();
+      }
+      else{
+        sendMsg("It's " + document.turn + "'s turn. \nThat box is already used.");
+      }
     }
-  }
+  
 
 }
 
 function changeTurn(){
+  document.chances = document.chances + 1;
   if(checkWinCombinations(document.turn)){
     if(document.turn == "X"){
       sendMsg("'" + document.player1 + "' has won the game.");
+      document.total = document.total + 1;
       document.winner = document.player1;
       document.p1score = document.p1score + 1;
       document.getElementById("p1score").innerText = document.p1score; 
+      document.getElementById("total").innerText = document.total; 
     }
     else{
-      sendMsg("'" + document.player2 + "' has won the game.");
-      document.winner = document.player2;
-      document.p2score = document.p2score + 1;
-      document.getElementById("p2score").innerText = document.p2score;
-    }
+        sendMsg("'" + document.player2 + "' has won the game.");
+        document.winner = document.player2;
+        document.total = document.total + 1;
+        document.p2score = document.p2score + 1;
+        document.getElementById("p2score").innerText = document.p2score;
+        document.getElementById("total").innerText = document.total;
+      }
+    
     
 
-  }else {
+  } else if(document.chances == 9){
+      sendMsg("It's a Tie.");
+      document.total = document.total + 1;
+      document.getElementById("total").innerText = document.total;
+  }
+  
+  else {
     if(document.turn == "X"){
     document.turn = "O";
     sendMsg("It's " + document.player2 + "'s turn.");
@@ -112,3 +137,4 @@ function checkWinCombinations(move){
   }
   return result;
 }
+
