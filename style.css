@@ -1,0 +1,41 @@
+body{
+ margin-bottom: 0px;
+ padding: 0px;
+ width: 100%; 
+}  
+table{
+  border: 5px solid;
+}
+.box{
+  border: 2px solid;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  color: grey;
+  size: 20px;
+}
+h3{
+  text-align: center;
+  align-self: center;
+  align-content: center;
+  align-items: center;
+}
+.reset{
+  text-align: center;
+  align-self: center;
+  align-content: center;
+  align-items: center;
+}
+.footer{
+  background-color: black;
+  text-align: center;
+  margin-bottom: 0px;
+  padding: 10px;
+}
+.footerp{
+  color: white;
+  margin: 0px;
+}
+.footer a{
+  color: cyan;
+}
