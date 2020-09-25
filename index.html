@@ -11,14 +11,35 @@
 
     <title>Tic Tac Toe</title>
   </head>
+  <!--  -->
+  <body onload="resetScore();">
 
-  <body onload="startGame();">
+
     <div class="jumbotron jumbotron-fluid text-center">
       <div class="container">
         <h1 class="display-4">Tic Tac Toe</h1>
         <p class="lead">A simple Tic Tac Toe game for two players.</p>
       </div>
     </div>
+
+
+    <div class="container mx-auto">
+      <form>
+        <div class="form-group">
+          <label for="player1">Player 1 Name : </label>
+          <input id = "p1" type="text" class="form-control" placeholder="Player 1">
+        </div>
+        <div class="form-group">
+          <label for="player2">Player 2 Name : </label>
+          <input id = "p2" type="text" class="form-control" placeholder="Player 2">
+        </div>
+        <div class="container mx-auto text-center">
+          <button onclick="startGame();" type="button" class="btn btn-info mx-auto">Start Game</button>
+        </div>        
+      </form>
+    </div>
+    <br><br>
+
     <div class="container mx-auto">
       <h3 id = "status" class="status_h3">Game Status</h3><hr><br>
       <table class="mx-auto">
@@ -39,16 +60,48 @@
             <td onclick="nextMove(this);" id = "9" class="box"></td>
           </tr>
         </tbody>
-      </table><br><br>
-    <div class="container mx-auto text-center">
-      <button onclick="startGame();" type="button" class="btn btn-info mx-auto">Reset Game</button>
-    </div>
+      </table>
+      </div><br><br>
+
+      <div class="container mx-auto text-center">
+        <button onclick="startGame();" type="button" class="btn btn-info mx-auto">Reload Game</button>
+      </div> <br><br>
+
+
+
+      <div class="container mx-auto">
+        <h3 id = "status" class="status_h3">Score Board</h3><hr><br>
+        <table class="table text-center">
+          <thead class="thead-dark">
+            <tr>
+              <th id = "p1name" scope="col">Player 1</th>
+              <th id = "p2name" scope="col">Player 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id = "p1score">0</td>
+              <td id = "p2score">0</td>
+            </tr>
+            
+          </tbody>
+        </table>
+        <br><br>
+        <div class="container mx-auto text-center">
+          <button onclick="resetGame();" type="button" class="btn btn-info mx-auto">Reset Scores</button>
+        </div> 
+        <br><br>
+
+    
     </div>
 
     <br><br>
+
+
     <div class="footer">
       <p class="footerp">Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="">shekhar316</a></p>
     </div>
+
     <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
