@@ -1,5 +1,6 @@
 
 function resetScore(){
+  window.location.reload();
   document.p1score = 0;
   document.p2score = 0;
   document.total = 0;
